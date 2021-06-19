@@ -9,7 +9,7 @@ function Card({card, onCardClick}) {
   return (
     <li className="grid-item">
       <img src={deleteIcon} alt="Удаление карточки" className="grid-item__delete-icon" />
-      <img src={card.link} alt={card.name} className="grid-item__image" onClick={handleClick} />
+      <img src={card.link} alt={card.name} className="grid-item__photo" onClick={handleClick} />
       <div className="grid-item__wrap">
         <h3 className="grid-item__name">{card.name}</h3>
         <div className="grid-item__like-container">
