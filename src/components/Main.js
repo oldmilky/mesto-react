@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import editAvatar from '../images/editAvatar.svg';
-import api from '../utils/api.js';
+import api from '../utils/api';
 
 function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
