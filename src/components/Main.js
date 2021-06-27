@@ -1,29 +1,29 @@
 import React from 'react';
 import Card from './Card';
 import editAvatar from '../images/editAvatar.svg';
-import api from '../utils/Api.js';
+import api from '../utils/api.js';
 
 function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
-  React.useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setUserName(data.name);
-      setUserDescription(data.about);
-      setUserAvatar(data.avatar)
-    });
-
-    api.getInitialCards().then(cardList => {
-      setCards(cardList);
-    })
-  }, []);
-
-  /* {Данные пользователя} */
+  /* Данные пользователя */
   const [userName, setUserName] = React.useState();
   const [userDescription, setUserDescription] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
 
     /* {Карточки} */
   const [cards, setCards] = React.useState([]);
+
+  React.useEffect(() => {
+    api.getUserInfo().then((data) => {
+      setUserName(data.name);
+      setUserDescription(data.about);
+      setUserAvatar(data.avatar)
+    }).catch(error => this._errorHandler(error));
+
+    api.getInitialCards().then(cardList => {
+      setCards(cardList);
+    }).catch(error => this._errorHandler(error));
+  }, []);  
 
   return (
     <main className="content">
@@ -46,7 +46,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
       <section className="photos">
         <ul className="grid-places">
-          {cards.map((card) => <Card  key={card._id} card={card} onCardClick={onCardClick} />)}
+          {cards.map((card) => ( <Card  key={card._id} card={card} onCardClick={onCardClick} />))}
         </ul>
       </section>
     </main>
