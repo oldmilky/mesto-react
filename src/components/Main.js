@@ -28,13 +28,13 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onCa
     
       <section className="photos">
         <ul className="grid-places">
-          {cards.map((card) => <Card  
+          {cards.map((card) => ( <Card  
             key={card._id} 
             card={card} 
             onCardClick={onCardClick}
             onCardLike={onCardLike}
             onCardDelete={onCardDelete}/>
-          )}
+          ))}
         </ul>
       </section>
     </main>

@@ -10,7 +10,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser])
+  }, [currentUser, isOpen])
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
@@ -29,12 +29,14 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         title="Редактировать профиль"
         isOpen={isOpen}
         onClose={onClose}
+        submitButtonValue={'Сохранить'}
         handleSubmit={handleSubmit}>
-          <input minLength="2" maxLength="40" type="text" className="popup__input popup__input_name_name" name="name" id="name-input" placeholder="Имя" defaultValue="Родион Стрелков" onChange={(evt) => setName(evt.target.value)}requiredvalue={name} />
+          <input minLength="2" maxLength="40" type="text" className="popup__input popup__input_name_name" name="name" 
+          id="name-input" placeholder="Имя" onChange={(evt) => setName(evt.target.value)} required value={name || ""} />
           <span className='popup__input-error popup__input-error_active' id='name-input-error' />
-          <input minLength="2" maxLength="200" type="text" className="popup__input popup__input_name_profession" name="profession" placeholder="Вид деятельности" id="profession-input" defaultValue="Городской изучатель" onChange={(evt) => setDescription(evt.target.value)}requiredvalue={description} />
+          <input minLength="2" maxLength="200" type="text" className="popup__input popup__input_name_profession" name="profession" 
+          placeholder="Вид деятельности" id="profession-input" onChange={(evt) => setDescription(evt.target.value)} required value={description || ""} />
           <span className='popup__input-error popup__input-error_active' id='profession-input-error' />
-          <input type="submit" className="popup__button-save" defaultValue="Сохранить" name="submit" />
         </PopupWithForm>
   );
 }
