@@ -2,8 +2,8 @@ import PopupWithForm from './PopupWithForm';
 import React from 'react';
 
 function AddPlacePopup({isOpen, onClose, onAddPlace}) {
-  const nameInput = React.createRef()
-  const linkInput = React.createRef()
+  const nameInput = React.useRef();
+  const linkInput = React.useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
